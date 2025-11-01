@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body{
+    background-color: #1b1b1b;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 180px;
+}
+
+.reduce-button {
+  appearance: none;
+  background-color: #0d7f0b;
+  border: 5px solid #0d7f0b;
+  border-radius: 10px; 
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 100;
+  min-height: 1px;
+  min-width: 0;
+  outline: none;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20%;
+  margin-left: 20px;
+}
+
+.url {
+    position: relative;
+    width: 300px;
+    margin-top: 30px;
+  }
+
+input[type="text"] {
+  width: 25%;
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+}
+
+
+input[type="text"]:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  }
+
+input[type="text"] {
+  transition: all 0.3s ease;
+}
+
