@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 
 function UrlShortener() {
-  const [originalUrl, setOriginalUrl] = useState('');
-  const [shortUrl, setShortUrl] = useState('');
-  const [error, setError] = useState('');
+  const [originalUrl, setOriginalUrl] = useState<string>('');
+  const [shortUrl, setShortUrl] = useState<string>('');
+  const [error, setError] = useState<string>('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setOriginalUrl(e.target.value);
   };
-
+  
   const handleSubmit = async () => {
     setError('');
     setShortUrl('');
@@ -29,7 +29,7 @@ function UrlShortener() {
 
       const data = await response.json();
       setShortUrl(data.shortUrl);
-    } catch (err) {
+    } catch {
       setError('Ошибка сети');
     }
   };
