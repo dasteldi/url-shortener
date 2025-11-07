@@ -9,6 +9,7 @@
 - React 19
 - Node.js
 - Mongo DB
+- TypeScript
 
 ## 🚀 Запуск проекта
 
