@@ -70,3 +70,44 @@ input[type="text"] {
   transition: all 0.3s ease;
 }
 
+header {
+  position: relative;
+  right: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: unset;
+  background-color: transparent;
+  padding: 20px 10px;
+}
+
+.wrap-logo {
+  display: flex;
+  align-items: center;
+ 
+}
+
+header a {
+  justify-content: space-around;
+  color: #ffffff;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  border-radius: 4px;
+  margin-left: -1100px;
+}
+
+header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+header a:hover {
+  background-color: #0a5910;
+  color: #ffffff;
+}
+
+header a.active {
+  background-color: #0a5910;
+}
+
