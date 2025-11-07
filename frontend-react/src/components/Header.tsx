@@ -4,9 +4,9 @@ function Header() {
     return (
         <header>
             <img src="/favicon.ico" alt="Icon" className="logo"></img>
-            <a href="/">Home</a>
-            <a href="/about">Other services</a>
-            <a href="/vacansy">Contact</a>
+            <a href="/">Главная</a>
+            <a href="/about">Другие сервисы</a>
+            <a href="/vacansy">Контакты</a>
         </header>
     );
 }

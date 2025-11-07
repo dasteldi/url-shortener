@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 body{
-    background-color: #1b1b1b;
-    color: white;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
 }
@@ -13,12 +11,13 @@ form{
     justify-content: center;
     align-items: center;
     margin-top: 180px;
+    margin-right: 200px;
 }
 
 .reduce-button {
   appearance: none;
-  background-color: #0d7f0b;
-  border: 5px solid #0d7f0b;
+  background-color: #1e02be;
+  border: 5px solid #1e02be;
   border-radius: 10px; 
   box-sizing: border-box;
   color: #FFFFFF;
@@ -72,7 +71,7 @@ input[type="text"] {
 
 header {
   position: relative;
-  right: 550px;
+  right: 510px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -89,12 +88,12 @@ header {
 
 header a {
   justify-content: space-around;
-  color: #ffffff;
+  color: #000000;
   padding: 12px;
   text-decoration: none;
   font-size: 18px; 
   border-radius: 4px;
-  margin-left: -1100px;
+  margin-left: -1020px;
 }
 
 header a.logo {
@@ -103,11 +102,11 @@ header a.logo {
 }
 
 header a:hover {
-  background-color: #0a5910;
-  color: #ffffff;
+  background-color: #1e02be;
+  color: white;
 }
 
 header a.active {
-  background-color: #0a5910;
+  background-color: #1e02be;
 }
 
