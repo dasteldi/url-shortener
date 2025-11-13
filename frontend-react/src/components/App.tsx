@@ -38,7 +38,7 @@ function UrlShortener() {
     <div style={{ maxWidth: '500px', margin: '50px auto', fontFamily: 'Arial' }}>
       <h1 className='gradient-text'>Добро пожаловать в URL-Shortener</h1>
       <p>URL Shortener - простой и мощный инструмент для преобразования длинных URL в короткие, удобные ссылки. Никаких скрытых платежей, никаких подписок, только чистый функционал</p>
-      <h2>Редактор ссылок</h2>
+      <h2 className='editor-text'>Редактор ссылок</h2>
       <input
         type="text"
         placeholder="Введите URL"

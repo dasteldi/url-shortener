@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
+    background-color: #f5f5f5;
+    min-height: 100vh;
 }
 
 form{
@@ -10,8 +18,8 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 180px;
-    margin-right: 200px;
+    padding: 100px 20px 20px;
+    width: 100%;
 }
 
 .reduce-button {
@@ -24,11 +32,11 @@ form{
   cursor: pointer;
   display: inline-block;
   font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   line-height: normal;
-  margin: 100;
-  min-height: 1px;
+  margin: 20px 0 0;
+  min-height: 50px;
   min-width: 0;
   outline: none;
   padding: 15px 20px;
@@ -38,18 +46,30 @@ form{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 20%;
-  margin-left: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 30px;
+}
+
+.reduce-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.reduce-button:active {
+  box-shadow: none;
+  transform: translateY(0);
 }
 
 .url {
     position: relative;
-    width: 300px;
-    margin-top: 30px;
-  }
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
 
 input[type="text"] {
-  width: 25%;
+  width: 100%;
   padding: 14px 20px;
   font-size: 16px;
   border: 2px solid #ccc;
@@ -57,13 +77,13 @@ input[type="text"] {
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
   background-color: #fff;
+  margin-top: 20px;
 }
-
 
 input[type="text"]:focus {
   border-color: #4A90E2;
   box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
-  }
+}
 
 input[type="text"] {
   transition: all 0.3s ease;
@@ -74,7 +94,7 @@ input[type="text"] {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 50px;
+    padding: 15px 20px;
     background: transparent;
     transition: all 0.3s ease;
     z-index: 1000;
@@ -83,7 +103,7 @@ input[type="text"] {
 .header.scrolled {
     background: #2b2b2b;
     backdrop-filter: blur(10px);
-    padding: 15px 50px;
+    padding: 10px 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,7 +115,7 @@ input[type="text"] {
 
 .logo {
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     text-decoration: none;
 }
@@ -103,16 +123,15 @@ input[type="text"] {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 15px;
     margin: 0;
     padding: 0;
-    margin-right: 200px;
 }
 
 .nav-links a {
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     transition: color 0.3s ease;
 }
 
@@ -120,18 +139,67 @@ input[type="text"] {
     color: #1e02be;
 }
 
+.editor-text{
+  margin-top: 20px;
+}
+
 .gradient-text {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: bold;
   background: linear-gradient(45deg, #1e02be, rgb(5, 2, 192), #1625ff, #0547df, #2c19aa);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient 3s ease infinite;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    form {
+        margin-top: 0;
+        margin-right: 0;
+    }
+    
+    .gradient-text {
+        font-size: 28px;
+    }
+    
+    input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gradient-text {
+        font-size: 24px;
+    }
+    
+    form {
+        padding: 80px 15px 15px;
+    }
+    
+    .reduce-button {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+    
+    .header {
+        padding: 10px 15px;
+    }
+    
+    .header.scrolled {
+        padding: 8px 15px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
 }
