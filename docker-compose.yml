@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: my-backend
+    ports:
+      - "3000:3000"  # Порт для API
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/reduce
+      - FRONTEND_URL=http://urls.dasteldi.ru/
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=33r3pn33@
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
