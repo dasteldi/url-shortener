@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Header: React.FC = () => {
-    const [isScrolled, setIsScrolled] = useState<boolean>(false);
+const Header = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = (): void => {
+        const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
 
@@ -16,8 +16,8 @@ const Header: React.FC = () => {
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
             <nav className="nav">
                 <ul className="nav-links">
-                    <li><a href="#Advantage-s">🔒Регистрация</a></li>
-                    <li><a href="#">🔐Вход</a></li>
+                    <li><a href="#register">🔒 Регистрация</a></li>
+                    <li><a href="#login">🔐 Вход</a></li>
                 </ul>
             </nav>
         </header>

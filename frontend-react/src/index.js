@@ -8,5 +8,6 @@ import Advantages from './components/Advantages.tsx';
 import Basement from './Basement.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<div> <Header /> <About /> <Advantages /> <UrlShortener /> <Basement /> </div>);
+root.render(<div> <Header /> <About /> <Advantages /> <UrlShortener /> </div>);
 // <UrlShortener />
+// <Basement />
