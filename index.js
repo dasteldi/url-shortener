@@ -3,7 +3,7 @@ const path = require('path');
 const { MongoClient } = require('mongodb');
 const crypto = require('crypto');
 const cors = require('cors');
-
+const { url_bd } = require('./controllers/userController.js')
 const app = express();
 
 app.use(cors());
@@ -44,25 +44,14 @@ async function generateUniqueReduceUrl(collection, length) {
 }
 
 app.post('/reduce', async (req, res) => {
+  const { db, client } = await connectToDB();
+  const collection = db.collection('reduces');
   const { url } = req.body;
   if (!url) {
     return res.status(400).json({ error: 'Вы не ввели URL для сокращения' });
   }
-
-  const { db, client } = await connectToDB();
-  try {
-    const collection = db.collection('reduces');
-    const reduce_url = await generateUniqueReduceUrl(collection, 6);
-    await collection.insertOne({ url, reduce_url }); 
-    const protocol = req.protocol;
-    const host = req.get('host');
-    const fullShortUrl = `${protocol}://${host}/${reduce_url}`;
-    res.json({ shortUrl: fullShortUrl });
-  } catch (err) {
-    res.status(500).json({ error: 'Ошибка сервера' });
-  } finally {
-    await client.close();
-  }
+  const reduce_url = await generateUniqueReduceUrl(collection, 6);
+  const result = await url_bd(reduce_url, url, req, res);
 });
 
 app.get('/:reduce_url', async (req, res) => {
