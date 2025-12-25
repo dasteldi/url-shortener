@@ -3,7 +3,7 @@ const path = require('path');
 const { MongoClient } = require('mongodb');
 const crypto = require('crypto');
 const cors = require('cors');
-const { url_bd } = require('./controllers/userController.js')
+const { url_bd, url_search } = require('./controllers/userController.js')
 const app = express();
 
 app.use(cors());
@@ -57,21 +57,7 @@ app.post('/reduce', async (req, res) => {
 app.get('/:reduce_url', async (req, res) => {
   const { reduce_url } = req.params;
   console.log('Обработка редиректа для:', reduce_url);
-  const { db, client } = await connectToDB();
-  try {
-    const collection = db.collection('reduces');
-    const doc = await collection.findOne({ reduce_url });
-    if (doc) {
-      res.redirect(doc.url);
-    } else {
-      res.status(404).sendFile(path.join(__dirname, 'error.html'));
-    }
-  } catch (err) {
-    console.error('Ошибка базы данных:', err);
-    res.status(500).json({ error: 'Ошибка базы данных' });
-  } finally {
-    await client.close();
-  }
+  const result = await url_search(reduce_url, req, res);
 });
 
 const PORT = 3000;

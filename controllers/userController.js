@@ -27,6 +27,24 @@ async function url_bd(reduce_url, url, req, res) {
   }
 }
 
+async function url_search(reduce_url, req, res){
+  const { db, client } = await connectToDB();
+  try {
+    const collection = db.collection('reduces');
+    const doc = await collection.findOne({ reduce_url });
+    if (doc) {
+      res.redirect(doc.url);
+    } else {
+      res.status(404).sendFile(path.join(__dirname, 'error.html'));
+    }
+  } catch (err) {
+    console.error('Ошибка базы данных:', err);
+    res.status(500).json({ error: 'Ошибка базы данных' });
+  } finally {
+    await client.close();
+  }
+}
 module.exports = {
-    url_bd
+    url_bd,
+    url_search
 };
