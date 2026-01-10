@@ -13,7 +13,7 @@ function UrlShortener() {
     setError('');
     setShortUrl('');
     try {
-      const response = await fetch('http://localhost:3000/reduce', {
+      const response = await fetch('http://localhost:3000/api/reduce', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
