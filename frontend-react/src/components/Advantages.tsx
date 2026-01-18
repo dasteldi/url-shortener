@@ -3,7 +3,6 @@ import React from 'react';
 function Advantages() {
     return(
         <div className='advantages'>
-            <h1 className='gradient-text2'>Наши приемущества</h1>
             <div className='advantage-1'>
                 <h2>Удобность сервиса</h2>
                 <p></p>
