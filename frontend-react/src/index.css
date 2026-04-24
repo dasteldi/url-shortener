@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0f1e 0%, #141b2b 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e2eaff;
+  min-height: 100vh;
+}
+
+.main-app {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px;
+  background: rgba(20, 30, 50, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 230, 255, 0.2);
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 230, 255, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.editor-text {
+  font-size: 2rem;
+  font-weight: 200;
+  background: linear-gradient(135deg, #fff, #b0f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.main-app input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 230, 255, 0.2);
+  border-radius: 30px;
+  color: #e2eaff;
+  font-family: inherit;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.main-app input:focus {
+  outline: none;
+  border-color: #a96cff;
+  box-shadow: 0 0 20px rgba(169, 108, 255, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.main-app input::placeholder {
+  color: #5f7aa0;
+}
+
+.reduce-button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #67138b, #a96cff);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(118, 14, 179, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.reduce-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.reduce-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(169, 108, 255, 0.4);
+}
+
+.reduce-button:hover::before {
+  left: 100%;
+}
+
+.result-box {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(20, 30, 50, 0.5);
+  border: 1px solid rgba(0, 230, 255, 0.2);
+  border-radius: 20px;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-box p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #b8c6e6;
+}
+
+.result-box a {
+  color: #00e6ff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 18px;
+  background: rgba(0, 230, 255, 0.1);
+  border: 1px solid rgba(0, 230, 255, 0.3);
+  border-radius: 30px;
+  transition: all 0.3s;
+  word-break: break-all;
+}
+
+.result-box a:hover {
+  background: linear-gradient(135deg, #00e6ff, #a96cff);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(169, 108, 255, 0.3);
+}
+
+.error-box {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 68, 68, 0.1);
+  border-left: 4px solid #ff4444;
+  border-radius: 20px;
+  animation: shake 0.5s ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.error-box p {
+  margin: 0;
+  color: #ff6666;
+  font-weight: 600;
+}
+
+.error-box p::before {
+  content: '⚠️ ';
+}
+
+@media (max-width: 768px) {
+  .main-app {
+    margin: 20px;
+    padding: 25px;
+  }
+  
+  .editor-text {
+    font-size: 1.6rem;
+  }
+  
+  .result-box p {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-app {
+    padding: 20px;
+  }
+  
+  .editor-text {
+    font-size: 1.3rem;
+  }
+}
