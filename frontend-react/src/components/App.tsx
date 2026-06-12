@@ -1,24 +1,35 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useMemo, useState, ChangeEvent, KeyboardEvent } from 'react';
 
 function UrlShortener() {
   const [originalUrl, setOriginalUrl] = useState<string>('');
   const [shortUrl, setShortUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setOriginalUrl(e.target.value);
   };
-  
+
+  const normalizedUrl = useMemo(() => originalUrl.trim(), [originalUrl]);
+
   const handleSubmit = async () => {
+    if (!normalizedUrl) {
+      setError('Введите ссылку, чтобы продолжить.');
+      setShortUrl('');
+      return;
+    }
+
     setError('');
     setShortUrl('');
+    setIsLoading(true);
+
     try {
       const response = await fetch('http://localhost:8000/api/reduce', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ url: originalUrl })
+        body: JSON.stringify({ url: normalizedUrl })
       });
 
       if (!response.ok) {
@@ -31,32 +42,59 @@ function UrlShortener() {
       setShortUrl(data.shortUrl);
     } catch {
       setError('Ошибка сети');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      void handleSubmit();
     }
   };
 
   return (
-    <div style={{ maxWidth: '500px', margin: '50px auto', fontFamily: 'Arial' }} className='main-app'>
-      <h4 className='editor-text'>Введите длинную ссылку</h4>
-      <input
-        type="text"
-        placeholder="Введите URL"
-        value={originalUrl}
-        onChange={handleChange}
-      />
-      <button onClick={handleSubmit} className='reduce-button'>Сократить</button>
-
-      {shortUrl && (
-        <div style={{ marginTop: '20px' }}>
-          <p>Короткая ссылка: <a href={shortUrl} target="_blank" rel="noopener noreferrer">{shortUrl}</a></p>
+    <main className="page">
+      <section className="card">
+        <div className="card-header">
+          <h1 className="title">Сократите ссылку за секунду</h1>
+          <p className="subtitle">
+            Вставьте полный URL и получите короткий адрес.
+          </p>
         </div>
-      )}
 
-      {error && (
-        <div style={{ marginTop: '20px', color: 'red' }}>
-          <p>Ошибка: {error}</p>
-        </div>
-      )}
-    </div>
+        <label className="input-label" htmlFor="url-input">Исходная ссылка</label>
+        <input
+          id="url-input"
+          type="url"
+          placeholder="https://example.com/very/long/link"
+          value={originalUrl}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          className="url-input"
+          autoComplete="off"
+        />
+
+        <button onClick={() => void handleSubmit()} className="submit-button" disabled={isLoading}>
+          {isLoading ? 'Сокращаем...' : 'Сократить'}
+        </button>
+
+        {shortUrl && (
+          <div className="result-box" role="status">
+            <span className="result-label">Короткая ссылка</span>
+            <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+              {shortUrl}
+            </a>
+          </div>
+        )}
+
+        {error && (
+          <div className="error-box" role="alert">
+            {error}
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
 
